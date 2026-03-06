@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACGN浣滃搧璁板綍绠＄悊绯荤粺</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-section">
+            <div class="header-left"></div>
+            <h1 class="main-title">ACGN浣滃搧璁板綍绠＄悊绯荤粺</h1>
+            <div class="header-right">
+                <div class="welcome-section">
+                    <span class="welcome-text">娆㈣繋鍥炴潵~<span id="currentUsername">admin</span></span>
+                </div>
+                <button id="logoutBtn" class="logout-btn">
+                    <span class="logout-text">閫€鍑虹櫥褰?/span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 鏃堕棿娈甸€夋嫨鍖哄煙 -->
+        <div class="period-section">
+            <div class="period-title">鏃堕棿娈甸€夋嫨</div>
+            <div class="period-selector">
+                <div class="year-selector">
+                    <select id="yearSelect" class="year-select">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+                <div class="season-buttons">
+                    <button class="season-btn active" data-season="鏄?>鏄?/button>
+                    <button class="season-btn" data-season="澶?>澶?/button>
+                    <button class="season-btn" data-season="绉?>绉?/button>
+                    <button class="season-btn" data-season="鍐?>鍐?/button>
+                </div>
+                <div class="period-action-buttons">
+                    <div class="top-button-container">
+                        <button id="topBtn" class="top-btn">
+                            TOP
+                        </button>
+                    </div>
+                    <div class="search-button-container">
+                        <button id="searchBtn" class="search-btn">
+                            鎼滅储
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="period-info">
+                <span id="currentPeriodDisplay">2024绉?/span>
+            </div>
+        </div>
+        
+        <!-- 缁熻鍥捐〃鍖哄煙 -->
+        <div class="stats-section">
+            <div class="stats-container">
+                <div class="pie-chart-section">
+                    <div class="chart-title">瀛ｈ妭鍒嗗竷</div>
+                    <div id="pieChartArea"></div>
+                </div>
+                <div class="bar-chart-section">
+                    <div class="chart-title">绫诲瀷缁熻</div>
+                    <div class="chart-toggle">
+                        <button class="toggle-btn active" data-mode="season">鎸夊鑺?/button>
+                        <button class="toggle-btn" data-mode="year">鎸夊勾浠?/button>
+                    </div>
+                    <div id="barChartArea"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 绫诲瀷閫夋嫨鍖哄煙 -->
+        <div class="type-section">
+            <div class="type-buttons">
+                <button class="type-btn active" data-type="0">鍔ㄧ敾</button>
+                <button class="type-btn" data-type="1">婕敾</button>
+                <button class="type-btn" data-type="2">娓告垙</button>
+                <button class="type-btn" data-type="3">灏忚</button>
+            </div>
+        </div>
+        
+        <!-- 鍐呭灞曠ず鍖哄煙 -->
+        <div class="content-section">
+            <div class="content-header" data-type="0">
+                <!-- 鍒犻櫎绌虹殑 sort-section 鍖哄煙 -->
+            </div>
+            <div id="contentArea"></div>
+        </div>
+    </div>
+
+    <!-- 缂栬緫寮圭獥 -->
+    <div class="edit-modal" id="editModal">
+        <div class="edit-modal-content">
+            <div class="edit-modal-header">
+                <h3 class="edit-modal-title" id="editModalTitle">缂栬緫浣滃搧</h3>
+            </div>
+            <form id="editForm">
+                <div class="edit-form-group">
+                    <label>绫诲瀷</label>
+                    <div class="edit-type-group">
+                        <button type="button" class="type-btn" data-type="0">鍔ㄧ敾</button>
+                        <button type="button" class="type-btn" data-type="1">婕敾</button>
+                        <button type="button" class="type-btn" data-type="2">娓告垙</button>
+                        <button type="button" class="type-btn" data-type="3">灏忚</button>
+                    </div>
+                    <input type="hidden" id="editType" name="type" required>
+                </div>
+                <div class="edit-form-group">
+                    <label for="editName">浣滃搧鍚嶇О</label>
+                    <input type="text" id="editName" name="name" required>
+                </div>
+                <div class="edit-form-group">
+                    <label for="editScore">璇勫垎</label>
+                    <input type="number" id="editScore" name="score" min="0" max="50" step="1" required>
+                </div>
+                <div class="edit-form-group">
+                    <label for="editYear">骞翠唤</label>
+                    <input type="number" id="editYear" name="year" min="1900" max="2100" required>
+                </div>
+                <div class="edit-form-group">
+                    <label>瀛ｈ妭</label>
+                    <div class="edit-season-group">
+                        <button type="button" class="season-btn" data-season="鏄?>鏄?/button>
+                        <button type="button" class="season-btn" data-season="澶?>澶?/button>
+                        <button type="button" class="season-btn" data-season="绉?>绉?/button>
+                        <button type="button" class="season-btn" data-season="鍐?>鍐?/button>
+                    </div>
+                    <input type="hidden" id="editSeason" name="season" required>
+                </div>
+                <div class="edit-form-actions">
+                    <button type="button" class="btn btn-secondary" id="editCancelBtn">鍙栨秷</button>
+                    <button type="submit" class="btn btn-primary" id="editSaveBtn">淇濆瓨</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 纭鍒犻櫎寮圭獥 -->
+    <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-modal-content">
+            <h3 class="confirm-modal-title">纭鍒犻櫎</h3>
+            <p class="confirm-modal-message" id="confirmMessage">纭畾瑕佸垹闄よ繖涓綔鍝佸悧锛?/p>
+            <div class="confirm-modal-actions">
+                <button class="btn btn-secondary" id="confirmCancelBtn">鍙栨秷</button>
+                <button class="btn btn-danger" id="confirmDeleteBtn">鍒犻櫎</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 閫€鍑虹櫥褰曠‘璁ゅ脊绐?-->
+    <div class="confirm-modal" id="logoutConfirmModal">
+        <div class="confirm-modal-content">
+            <h3 class="confirm-modal-title">纭閫€鍑虹櫥褰?/h3>
+            <p class="confirm-modal-message">纭畾瑕侀€€鍑虹櫥褰曞悧锛?/p>
+            <div class="confirm-modal-actions">
+                <button class="btn btn-secondary" id="logoutCancelBtn">鍙栨秷</button>
+                <button class="btn btn-danger" id="logoutConfirmBtn">纭閫€鍑?/button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../lib/jquery-3.6.1.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../lib/echarts.min.js"></script>
+    <script src="../js/app-path.js"></script>`r`n    <script src="../js/main.js"></script>
+</body>
+</html> 

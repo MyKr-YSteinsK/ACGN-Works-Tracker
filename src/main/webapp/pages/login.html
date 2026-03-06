@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鐧诲綍 - ACGN浣滃搧灞曠ず绯荤粺</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- 娴佹槦鏁堟灉 -->
+        <div class="meteor-container">
+            <div class="meteor meteor-1"></div>
+            <div class="meteor meteor-2"></div>
+            <div class="meteor meteor-3"></div>
+            <div class="meteor meteor-4"></div>
+            <div class="meteor meteor-5"></div>
+            <div class="meteor meteor-6"></div>
+            <div class="meteor meteor-7"></div>
+            <div class="meteor meteor-8"></div>
+            <div class="meteor meteor-9"></div>
+            <div class="meteor meteor-10"></div>
+            <div class="meteor meteor-11"></div>
+            <div class="meteor meteor-12"></div>
+        </div>
+        
+        <!-- 鏄熸槦鏁堟灉 -->
+        <div class="stars-container">
+            <div class="star star-1"></div>
+            <div class="star star-2"></div>
+            <div class="star star-3"></div>
+            <div class="star star-4"></div>
+            <div class="star star-5"></div>
+            <div class="star star-6"></div>
+            <div class="star star-7"></div>
+            <div class="star star-8"></div>
+            <div class="star star-9"></div>
+            <div class="star star-10"></div>
+            <div class="star star-11"></div>
+            <div class="star star-12"></div>
+            <div class="star star-13"></div>
+            <div class="star star-14"></div>
+            <div class="star star-15"></div>
+            <div class="star star-16"></div>
+            <div class="star star-17"></div>
+            <div class="star star-18"></div>
+            <div class="star star-19"></div>
+            <div class="star star-20"></div>
+        </div>
+        
+        <!-- 鐧诲綍妗?-->
+        <div class="form-box active" id="loginBox">
+            <div class="form-header">
+                <h1 class="form-title">娆㈣繋鍥炴潵</h1>
+                <p class="form-subtitle">鐧诲綍鍒癆CGN浣滃搧璁板綍绠＄悊绯荤粺</p>
+            </div>
+            
+            <form id="loginForm" class="form-content">
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="loginUsername" name="username" required>
+                        <label for="loginUsername">鐢ㄦ埛鍚?/label>
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="loginPassword" name="password" required>
+                        <label for="loginPassword">瀵嗙爜</label>
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">鐧诲綍</span>
+                    <div class="btn-loading">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+                
+                <div class="error-message" id="loginErrorMsg"></div>
+            </form>
+            
+            <div class="form-footer">
+                <button class="switch-btn" id="showRegister">绔嬪嵆娉ㄥ唽</button>
+                <button class="switch-btn" id="showForgot">蹇樿瀵嗙爜锛?/button>
+            </div>
+        </div>
+        
+        <!-- 娉ㄥ唽妗?-->
+        <div class="form-box" id="registerBox">
+            <div class="form-header">
+                <h1 class="form-title">鍒涘缓璐﹀彿</h1>
+                <p class="form-subtitle">娉ㄥ唽鏂扮殑鐢ㄦ埛璐﹀彿</p>
+            </div>
+            
+            <form id="registerForm" class="form-content">
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="regUsername" name="username" required>
+                        <label for="regUsername">鐢ㄦ埛鍚?/label>
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="regPassword" name="password" required>
+                        <label for="regPassword">瀵嗙爜</label>
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="regConfirmPassword" name="confirmPassword" required>
+                        <label for="regConfirmPassword">纭瀵嗙爜</label>
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">娉ㄥ唽</span>
+                    <div class="btn-loading">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+                
+                <div class="error-message" id="registerErrorMsg"></div>
+            </form>
+            
+            <div class="form-footer">
+                <button class="switch-btn" id="backToLogin">杩斿洖鐧诲綍</button>
+            </div>
+        </div>
+        
+        <!-- 蹇樿瀵嗙爜妗?-->
+        <div class="form-box" id="forgotBox">
+            <div class="form-header">
+                <h1 class="form-title">閲嶇疆瀵嗙爜</h1>
+                <p class="form-subtitle">杈撳叆鐢ㄦ埛鍚嶅拰鏂板瘑鐮?/p>
+            </div>
+            
+            <form id="forgotForm" class="form-content">
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="forgotUsername" name="username" required>
+                        <label for="forgotUsername">鐢ㄦ埛鍚?/label>
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="forgotNewPassword" name="newPassword" required>
+                        <label for="forgotNewPassword">鏂板瘑鐮?/label>
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="forgotConfirmPassword" name="confirmPassword" required>
+                        <label for="forgotConfirmPassword">纭鏂板瘑鐮?/label>
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">閲嶇疆瀵嗙爜</span>
+                    <div class="btn-loading">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+                
+                <div class="error-message" id="forgotErrorMsg"></div>
+            </form>
+            
+            <div class="form-footer">
+                <button class="switch-btn" id="backToLoginFromForgot">杩斿洖鐧诲綍</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/app-path.js"></script>`r`n    <script src="../js/login.js"></script>
+</body>
+</html> 
